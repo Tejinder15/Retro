@@ -9,11 +9,11 @@ import Liked from "./Pages/Liked/Liked";
 function App() {
   return (
     <div className="App">
-      {/* <Home /> */}
+      <Home />
       {/* <Login /> */}
       {/* <Signup /> */}
       {/* <Videos /> */}
-      <Playlist />
+      {/* <Playlist /> */}
       {/* <Liked/> */}
     </div>
   );
