@@ -1,0 +1,47 @@
+.sidebar {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  max-width: 70px;
+  padding: 1rem 1.4rem;
+  background-color: var(--sidebar-color);
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.sidebar_items {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 300px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  color: #ced4da;
+}
+
+.active {
+  color: var(--retro-color);
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 100px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 3;
+  top: -5px;
+  left: 105%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}

@@ -1,0 +1,9 @@
+.category_heading {
+  color: #ced4da;
+}
+
+.videolist_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 280px));
+  gap: 20px;
+}

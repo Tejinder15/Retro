@@ -1,0 +1,28 @@
+.horizontal_card {
+  max-width: 26rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.6rem;
+  background-color: var(--sidebar-color);
+  margin: 0 auto;
+  box-shadow: 0px 4px 5px 1px rgb(0 0 0 / 50%);
+}
+
+.basic_card_primary {
+  padding: 8px 12px;
+  max-width: 200px;
+}
+
+.card_title {
+  color: var(--hero-title);
+}
+
+.creator {
+  color: var(--category-color);
+}
+
+.card_action {
+  padding-top: 1rem;
+  align-self: stretch;
+}
