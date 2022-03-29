@@ -1,0 +1,35 @@
+.name_container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.fname,
+.lname {
+  min-width: 0 !important;
+  max-width: 140px;
+}
+
+/* Choice Check for Signup */
+.signup_group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 1rem 0;
+}
+
+.signup_link {
+  color: black;
+  margin-bottom: 2px;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/* Media Query */
+@media only screen and (max-width: 425px) {
+  .auth-container {
+    padding: 1.2rem 0.6rem;
+  }
+}
