@@ -65,7 +65,8 @@ input[type="password"] {
 }
 
 .video_main_container {
-  margin-left: 80px;
+  margin-left: 90px;
+  padding-bottom: 1.3rem;
 }
 
 .liked_container {
@@ -73,4 +74,8 @@ input[type="password"] {
   margin: 0 auto;
   border: 2px solid black;
   padding: 1rem;
+}
+
+.category_heading {
+  color: var(--hero-title);
 }

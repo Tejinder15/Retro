@@ -5,10 +5,10 @@
 }
 
 .navbar {
-  width: 86%;
-  margin: 0 auto;
+  width: 94%;
+  margin: 0 auto 0 80px;
   padding: 0px 2rem;
-  background-color: transparent;
+  background-color: var(--body-color);
   position: sticky;
   top: 0;
   z-index: 5;

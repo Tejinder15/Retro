@@ -1,0 +1,40 @@
+.Link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.videocard {
+  background-color: var(--sidebar-color);
+}
+
+.video_title {
+  color: var(--hero-title);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 2px 4px;
+  margin-top: -2px;
+}
+
+.basic_card_description {
+  display: flex;
+  align-items: center;
+  padding-top: 6px;
+}
+
+.channel_logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 6px;
+}
+
+.basic_card_actions_secondary {
+  padding-top: 6px;
+  padding-left: 8px;
+  color: var(--category-color);
+  margin-left: auto;
+  cursor: pointer;
+  pointer-events: fill;
+}

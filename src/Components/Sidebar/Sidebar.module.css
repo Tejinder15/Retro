@@ -23,6 +23,10 @@
   color: #ced4da;
 }
 
+.side_icon {
+  color: var(--hero-title);
+}
+
 .active {
   color: var(--retro-color);
 }
