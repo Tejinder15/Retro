@@ -1,5 +1,60 @@
 import styles from "./Signup.module.css";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import { useAuth } from "../../Context/AuthContext/auth-context";
 const Signup = () => {
+  const navigate = useNavigate();
+  const { authDispatch } = useAuth();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    confirmPassword: "",
+  });
+
+  const checkPasswordHandler = () => {
+    if (user.password !== user.confirmPassword) {
+      alert("Password Does not Match");
+    } else {
+      return true;
+    }
+  };
+
+  const signupHandler = async (event) => {
+    event.preventDefault();
+    if (checkPasswordHandler()) {
+      try {
+        const response = await axios.post("/api/auth/signup", {
+          email: user.email,
+          password: user.password,
+          firstName: user.firstName,
+          lastName: user.lastName,
+        });
+        if (response.status === 201) {
+          authDispatch({
+            type: "SIGNUP",
+            payload: {
+              user: response.data.createdUser,
+              token: response.data.encodedToken,
+            },
+          });
+          localStorage.setItem("token", response.data.encodedToken);
+          localStorage.setItem(
+            "user",
+            JSON.stringify(response.data.createdUser)
+          );
+          navigate("/");
+          alert("Signed up");
+        } else {
+          console.error("Error", response);
+        }
+      } catch (error) {
+        throw new Error(error);
+      }
+    }
+  };
   return (
     <div className="auth-container">
       <h2 className="center-text">Signup</h2>
@@ -14,6 +69,8 @@ const Signup = () => {
               required
               autoComplete="off"
               id="first_name"
+              onChange={(e) => setUser({ ...user, firstName: e.target.value })}
+              value={user.firstName}
             />
           </div>
           <div className="input-group">
@@ -25,6 +82,8 @@ const Signup = () => {
               required
               autoComplete="off"
               id="last_name"
+              value={user.lastName}
+              onChange={(e) => setUser({ ...user, lastName: e.target.value })}
             />
           </div>
         </div>
@@ -36,11 +95,20 @@ const Signup = () => {
             className="textfield"
             required
             autoComplete="off"
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
+            value={user.email}
           />
         </div>
         <div className="input-group">
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" required id="password" />
+          <input
+            type="password"
+            name="password"
+            required
+            value={user.password}
+            id="password"
+            onChange={(e) => setUser({ ...user, password: e.target.value })}
+          />
         </div>
         <div className="input-group">
           <label htmlFor="confirm_password">Confirm Password</label>
@@ -49,16 +117,24 @@ const Signup = () => {
             name="confirmPassword"
             required
             id="confirm_password"
+            onChange={(e) =>
+              setUser({ ...user, confirmPassword: e.target.value })
+            }
+            value={user.confirmPassword}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={signupHandler}
+        >
           Create New Account
         </button>
       </form>
       <div className="signup-group">
-        <a href="hel" className="signup-link">
+        <Link to="/login" className="signup-link">
           Already have an account
-        </a>
+        </Link>
         <span className="material-icons-outlined">navigate_next</span>
       </div>
     </div>

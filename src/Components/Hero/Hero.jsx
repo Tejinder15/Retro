@@ -1,11 +1,26 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../Context/AuthContext/auth-context";
 import herovideo from "../../Assets/Video/Hero.mp4";
 import styles from "./Hero.module.css";
 const Hero = () => {
-  const [logged, setLogged] = useState(false);
-  const loginHandler = () => {
-    setLogged(true);
+  const { authState, authDispatch } = useAuth();
+  const userName = authState.user;
+  const redirect = useNavigate();
+
+  const checkStatus = (userName) => {
+    return userName ? "Logout" : "Login";
+  };
+
+  const logoutHandler = () => {
+    redirect("/");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    authDispatch({ type: "LOGOUT" });
+  };
+
+  const userHandler = (type) => {
+    type === "Login" ? redirect("/login") : logoutHandler();
   };
   return (
     <div className={styles.hero_container}>
@@ -15,17 +30,14 @@ const Hero = () => {
         </div>
         <ul className="nav-links">
           <li>
-            {logged ? (
-              <img
-                src="https://avatars.dicebear.com/api/micah/maya.svg?background=%23ef233c"
-                alt="userAvatar"
-                className={styles.avatar_sm}
-              />
-            ) : (
-              <button className={styles.login_btn} onClick={loginHandler}>
-                Login
+            {
+              <button
+                className={styles.login_btn}
+                onClick={() => userHandler(checkStatus(userName))}
+              >
+                {checkStatus(userName)}
               </button>
-            )}
+            }
           </li>
         </ul>
       </nav>
