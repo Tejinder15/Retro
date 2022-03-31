@@ -11,6 +11,10 @@
   padding: 3rem 0;
 }
 
+.link {
+  text-decoration: none;
+}
+
 .category_container {
   display: flex;
   justify-content: space-around;

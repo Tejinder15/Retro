@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import styles from "./Categories.module.css";
 const Categories = () => {
@@ -19,14 +20,16 @@ const Categories = () => {
       <h2 className={styles.section_heading}>Categories</h2>
       <div className={styles.category_container}>
         {category.map((item) => (
-          <div className={styles.category_col} key={item._id}>
-            <img
-              src={item.image}
-              alt={item.categoryName}
-              className={styles.category_pic}
-            />
-            <div className={styles.after}>{item.categoryName}</div>
-          </div>
+          <Link to="/videos" className={styles.link}>
+            <div className={styles.category_col} key={item._id}>
+              <img
+                src={item.image}
+                alt={item.categoryName}
+                className={styles.category_pic}
+              />
+              <div className={styles.after}>{item.categoryName}</div>
+            </div>
+          </Link>
         ))}
       </div>
     </section>
