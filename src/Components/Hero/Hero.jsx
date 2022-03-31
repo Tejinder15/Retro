@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import herovideo from "../../Assets/Video/Hero.mp4";
 import styles from "./Hero.module.css";
 const Hero = () => {
@@ -32,7 +33,9 @@ const Hero = () => {
         <h1 className={styles.hero_title}>
           Get Entertainment With Different Genre of Videos.
         </h1>
-        <p className={styles.signup}>Watch Now</p>
+        <Link to="/videos" className={styles.signup}>
+          Watch Now
+        </Link>
       </div>
       <div className={styles.hero_video}>
         <video width="100%" autoPlay muted loop>

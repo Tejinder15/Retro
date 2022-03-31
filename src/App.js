@@ -1,20 +1,21 @@
-import Home from "./Pages/Home/Home";
-import Login from "./Pages/Login/Login";
+import {Home,Login,Signup,Videos,Liked,Playlist, Watch,WatchLater,History} from "./Pages";
+import {Routes,Route} from "react-router-dom";
 import "./App.css";
-import Signup from "./Pages/Signup/Signup";
-import Videos from "./Pages/Videos/Videos";
-import Playlist from "./Pages/Playlist/Playlist";
-import Liked from "./Pages/Liked/Liked";
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      {/* <Login /> */}
-      {/* <Signup /> */}
-      {/* <Videos /> */}
-      {/* <Playlist /> */}
-      {/* <Liked/> */}
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<Signup/>}/>
+        <Route path="/videos" element={<Videos/>}/>
+        <Route path="/liked" element={<Liked/>}/>
+        <Route path="/playlist" element={<Playlist/>}/>
+        <Route path="/history" element={<History/>}/>
+        <Route path="/watch" element={<Watch/>}/>
+        <Route path="/watchlater" element={<WatchLater/>}/>
+      </Routes>
     </div>
   );
 }
