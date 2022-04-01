@@ -2,13 +2,14 @@ import VideoCard from "./VideoCard/VideoCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./VideoContainer.module.css";
-import { addToWatchlater } from "../../Utils/addToWatchlater";
-import { useWatchLater } from "../../Context/WatchLaterContext/watchlater-context";
+import { addToWatchlater, addToHistory } from "../../Utils";
+import { useWatchLater, useAuth, useHistory } from "../../Context";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Context/AuthContext/auth-context";
 const VideoContainer = ({ category }) => {
   const [videoListData, setVideoListData] = useState([]);
   const { watchLaterState, watchLaterDispatch } = useWatchLater();
+  const { HistoryState, HistoryDispatch } = useHistory();
+  const { history } = HistoryState;
   const { watchlater } = watchLaterState;
   const navigate = useNavigate();
   const { authState } = useAuth();
@@ -18,6 +19,15 @@ const VideoContainer = ({ category }) => {
     if (token) {
       const video = videoListData.find((item) => item._id === videoid);
       addToWatchlater(video, token, watchLaterDispatch);
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const addhistoryHandler = async (videoid) => {
+    if (token) {
+      const video = videoListData.find((item) => item._id === videoid);
+      addToHistory(video, token, HistoryDispatch);
     } else {
       navigate("/login");
     }
@@ -46,6 +56,7 @@ const VideoContainer = ({ category }) => {
             logo={item.logo}
             videoId={item._id}
             addToHandler={addToHandler}
+            addToHistory={addhistoryHandler}
           />
         ))}
       </div>

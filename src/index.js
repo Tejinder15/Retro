@@ -6,6 +6,7 @@ import App from "./App";
 import { makeServer } from "./server";
 import { AuthProvider } from "./Context/AuthContext/auth-context";
 import { WatchLaterProvider } from "./Context/WatchLaterContext/watchlater-context";
+import { HistoryProvider } from "./Context/HistoryContext/history-context";
 
 // Call make Server
 makeServer();
@@ -15,7 +16,9 @@ ReactDOM.render(
     <BrowserRouter>
     <AuthProvider>
       <WatchLaterProvider>
-      <App />
+        <HistoryProvider>
+          <App />
+        </HistoryProvider>
       </WatchLaterProvider>
     </AuthProvider>
     </BrowserRouter>

@@ -1,0 +1,14 @@
+const HistoryReducer = (state,action) => {
+    switch(action.type){
+        case "GET_HISTORY":
+            return {...state,history:action.payload};
+        case "ADD_TO_HISTORY":
+            return {...state,history:action.payload};
+        case "REMOVE_FROM_HISTORY":
+            return {...state,history:action.payload};
+        default:
+            return state;
+    }
+}
+
+export  {HistoryReducer};

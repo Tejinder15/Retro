@@ -5,7 +5,10 @@ const VideoCard = (props) => {
     <div className={styles.videocard}>
       <div className={`${styles.basic_card} shadow`}>
         <Link to={"/watch" + `?v=${props.videoId}`} className={styles.Link}>
-          <div className="basic-card-image-title">
+          <div
+            className="basic-card-image-title"
+            onClick={() => props.addToHistory(props.videoId)}
+          >
             <img
               src={props.thumbnail}
               alt={props.title}
