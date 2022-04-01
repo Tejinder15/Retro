@@ -75,9 +75,20 @@ input[type="password"] {
 
 .liked_container {
   max-width: 40rem;
+  max-height: 32rem;
+  overflow-y: auto;
   margin: 0 auto;
   border: 2px solid black;
   padding: 1rem;
+}
+
+.liked_container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.liked_container::-webkit-scrollbar-thumb {
+  background-color: var(--sidebar-color);
+  border-radius: 10px;
 }
 
 .category_heading {
