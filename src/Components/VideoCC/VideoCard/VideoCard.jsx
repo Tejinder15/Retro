@@ -24,7 +24,13 @@ const VideoCard = (props) => {
             </div>
             <div className={styles.video_title}>{props.title}</div>
             <div className={styles.basic_card_actions_secondary}>
-              <span className="material-icons-round">add_box</span>
+              <span
+                className="material-icons-round"
+                onClick={() => props.addToHandler(props.videoId)}
+                title="Add to watchlater"
+              >
+                add_box
+              </span>
             </div>
           </div>
         </div>
