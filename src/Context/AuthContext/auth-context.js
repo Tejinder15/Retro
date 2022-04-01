@@ -1,5 +1,4 @@
-import {createContext,useContext,useReducer} from "react";
-import { useEffect } from "react";
+import {useEffect,createContext,useContext,useReducer} from "react";
 import { authReducer } from "../../Reducer/auth-reducer";
 
 const defaultValue = {user:null,token:null};
