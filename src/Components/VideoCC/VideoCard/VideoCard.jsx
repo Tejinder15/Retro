@@ -27,6 +27,7 @@ const VideoCard = (props) => {
               <span
                 className="material-icons-round"
                 onClick={() => props.addToHandler(props.videoId)}
+                title="Add to watchlater"
               >
                 add_box
               </span>
