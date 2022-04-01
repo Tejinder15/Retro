@@ -4,9 +4,7 @@ import {BrowserRouter} from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
-import { AuthProvider } from "./Context/AuthContext/auth-context";
-import { WatchLaterProvider } from "./Context/WatchLaterContext/watchlater-context";
-import { HistoryProvider } from "./Context/HistoryContext/history-context";
+import { AuthProvider,WatchLaterProvider,HistoryProvider,LikeProvider } from "./Context/";
 
 // Call make Server
 makeServer();
@@ -17,7 +15,9 @@ ReactDOM.render(
     <AuthProvider>
       <WatchLaterProvider>
         <HistoryProvider>
+          <LikeProvider>
           <App />
+          </LikeProvider>
         </HistoryProvider>
       </WatchLaterProvider>
     </AuthProvider>
