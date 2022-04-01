@@ -20,8 +20,8 @@ const Categories = () => {
       <h2 className={styles.section_heading}>Categories</h2>
       <div className={styles.category_container}>
         {category.map((item) => (
-          <Link to="/videos" className={styles.link}>
-            <div className={styles.category_col} key={item._id}>
+          <Link to="/videos" className={styles.link} key={item._id}>
+            <div className={styles.category_col}>
               <img
                 src={item.image}
                 alt={item.categoryName}
