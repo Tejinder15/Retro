@@ -38,6 +38,10 @@
   margin-left: auto;
 }
 
+.watch_video_actions span {
+  cursor: pointer;
+}
+
 .watch_video_actions > span:first-child {
   margin-right: 1rem;
 }

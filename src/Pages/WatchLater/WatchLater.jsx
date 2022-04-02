@@ -2,8 +2,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useWatchLater } from "../../Context/WatchLaterContext/watchlater-context";
 import { useAuth } from "../../Context/AuthContext/auth-context";
-import { getWatchLater } from "../../Utils/getWatchLater";
-import { removeFromWatchLater } from "../../Utils/removeFromWatchLater";
+import { getWatchLater, removeFromWatchLater } from "../../Utils/";
 import { useEffect } from "react";
 import WatchLaterCard from "../../Components/WatchLaterCard/WatchLaterCard";
 

@@ -3,16 +3,27 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 import styles from "./Watch.module.css";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useLike, useAuth } from "../../Context";
 import axios from "axios";
+import { addToLike } from "../../Utils";
 
 const Watch = () => {
   const [searchParams] = useSearchParams();
   const [videoData, setVideoData] = useState([]);
+  const { LikeState, LikeDispatch } = useLike();
+  const { authState } = useAuth();
+  const { token } = authState;
   const v = searchParams.get("v");
 
   const loadVideoData = async () => {
     const response = await axios.get(`/api/video/${v}`);
     setVideoData(response.data.video);
+  };
+
+  const addlikeHandler = async (video) => {
+    if (token) {
+      addToLike(videoData, token, LikeDispatch);
+    }
   };
 
   useEffect(() => loadVideoData(), []);
@@ -39,7 +50,12 @@ const Watch = () => {
               </div>
             </div>
             <div className={styles.watch_video_actions}>
-              <span className="material-icons-round">thumb_up</span>
+              <span
+                className="material-icons-round"
+                onClick={() => addlikeHandler(videoData._id)}
+              >
+                thumb_up
+              </span>
               <span className="material-icons-round">playlist_add</span>
             </div>
           </div>
