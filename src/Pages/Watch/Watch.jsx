@@ -1,5 +1,6 @@
 import Navbar from "../../Components/Navbar/Navbar";
 import Sidebar from "../../Components/Sidebar/Sidebar";
+import { PlaylistModal } from "../../Components/PlaylistModal/PlaylistModal";
 import styles from "./Watch.module.css";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -8,6 +9,8 @@ import axios from "axios";
 import { addToLike } from "../../Utils";
 
 const Watch = () => {
+  const [isPlaylistModalVisible, setIsPlaylistModalVisible] = useState(false);
+  const [liked, setLiked] = useState(false);
   const [searchParams] = useSearchParams();
   const [videoData, setVideoData] = useState([]);
   const { LikeState, LikeDispatch } = useLike();
@@ -23,7 +26,12 @@ const Watch = () => {
   const addlikeHandler = async (video) => {
     if (token) {
       addToLike(videoData, token, LikeDispatch);
+      setLiked(true);
     }
+  };
+
+  const togglePlaylistModal = () => {
+    setIsPlaylistModalVisible(() => !isPlaylistModalVisible);
   };
 
   useEffect(() => loadVideoData(), []);
@@ -51,7 +59,7 @@ const Watch = () => {
             </div>
             <div className={styles.watch_video_actions}>
               <span
-                className="material-icons-round"
+                className={`material-icons-round ${liked && styles.liked}`}
                 onClick={() => addlikeHandler(videoData._id)}
               >
                 thumb_up
@@ -61,6 +69,11 @@ const Watch = () => {
           </div>
         </div>
       </div>
+      <PlaylistModal
+        visibility={isPlaylistModalVisible}
+        toggleVisibility={togglePlaylistModal}
+        video={videoData}
+      />
       <Sidebar />
     </div>
   );
