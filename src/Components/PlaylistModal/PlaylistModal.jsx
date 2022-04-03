@@ -71,17 +71,18 @@ export const PlaylistModal = ({ visibility, toggleVisibility, video }) => {
             clear
           </span>
         </div>
-        <hr />
+        <div className={styles.line}></div>
         <div className={styles.addToPlayList__modalList}>
           {playlist.length > 0
             ? playlist.map((item) => (
-                <div key={item._id} className="input-wrapper checkbox">
+                <div key={item._id} className={styles.playlist_wrapper}>
                   <input
                     type="checkbox"
                     id={item._id}
                     onChange={handlePlaylistCheckboxClick}
+                    className={styles.playlist_checkbox}
                   />
-                  <label htmlFor={item._id} className="m-xxs m-tb0">
+                  <label htmlFor={item._id} className={styles.playlist_name}>
                     {item.title}
                   </label>
                 </div>
@@ -97,7 +98,7 @@ export const PlaylistModal = ({ visibility, toggleVisibility, video }) => {
             value={newPlaylistData.title}
           />
           <div
-            className={`btn btn-primary styles.create_playlist`}
+            className={`btn btn-primary ${styles.create_playlist}`}
             onClick={handleCreateNewPlayList}
           >
             CREATE
