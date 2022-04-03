@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const removeFromPlaylist = async ({video,token,playlistDispatch,playlistId}) => {
+const removeFromPlaylist = async (videoid,token,playlistDispatch,playlistId) => {
   try {
-    const response = await axios.delete(`/api/user/playlists/${playlistId}/${video._id}`, {
+    const response = await axios.delete(`/api/user/playlists/${playlistId}/${videoid}`, {
       headers: {
         authorization: token,
       },
@@ -10,7 +10,7 @@ const removeFromPlaylist = async ({video,token,playlistDispatch,playlistId}) => 
     if (response.status === 200) {
       playlistDispatch({
         type: "REMOVE_FROM_PLAYLIST",
-        payload: response.data.playlists,
+        payload: response.data.playlist,
       });
     } else {
       throw new Error(response.status);

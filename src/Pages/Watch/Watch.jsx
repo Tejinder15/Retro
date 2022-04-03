@@ -64,7 +64,12 @@ const Watch = () => {
               >
                 thumb_up
               </span>
-              <span className="material-icons-round">playlist_add</span>
+              <span
+                className="material-icons-round"
+                onClick={togglePlaylistModal}
+              >
+                playlist_add
+              </span>
             </div>
           </div>
         </div>
