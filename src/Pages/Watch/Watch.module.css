@@ -1,17 +1,30 @@
 .watch_video_container {
-  max-width: 48rem;
+  max-width: 50rem;
   box-shadow: 0px 4px 5px 1px rgb(0 0 0 / 10%);
   background-color: var(--sidebar-color);
 }
 
-.watch_video {
+.iframe_wrapper{
+  position: relative;
   width: 100%;
-  height: 27rem;
+  overflow: hidden;
+  padding-top: 56.25%;
+}
+
+.watch_video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 .watch_video_footer {
   display: flex;
-  padding: 1rem;
+  padding: 0.8rem;
 }
 
 .channel_logo {
@@ -20,8 +33,14 @@
   border-radius: 50%;
 }
 
+.video_brief{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
 .watch_video_title {
-  font-size: 1.3rem;
   color: white;
   padding: 0 10px;
 }
@@ -35,15 +54,14 @@
 .watch_video_actions {
   color: white;
   padding: 4px 8px;
+  align-self: flex-end;
   margin-left: auto;
+
 }
 
 .watch_video_actions span {
+  padding: 4px 6px;
   cursor: pointer;
-}
-
-.watch_video_actions > span:first-child {
-  margin-right: 1rem;
 }
 
 .liked {
