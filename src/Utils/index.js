@@ -7,3 +7,7 @@ export {getWatchLater} from "./getWatchLater";
 export {removeFromHistory} from "./removeFromHistory";
 export {removeFromWatchLater} from "./removeFromWatchLater";
 export {removeFromLike} from "./removeFromLike";
+export {createNewPlaylist} from "./createNewPlaylist";
+export {removeFromPlaylist} from "./removeFromPlaylist";
+export {addToPlaylist} from "./addToPlaylist";
+export {deletePlaylist} from "./deletePlaylist";

@@ -45,3 +45,7 @@
 .watch_video_actions > span:first-child {
   margin-right: 1rem;
 }
+
+.liked {
+  color: var(--retro-color);
+}

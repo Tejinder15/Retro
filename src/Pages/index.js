@@ -7,3 +7,4 @@ export {Playlist} from "./Playlist/Playlist";
 export {History} from "./History/History";
 export {Watch} from "./Watch/Watch";
 export {WatchLater} from "./WatchLater/WatchLater";
+export {SinglePlaylist} from "./SinglePlaylist/SinglePlaylist";
