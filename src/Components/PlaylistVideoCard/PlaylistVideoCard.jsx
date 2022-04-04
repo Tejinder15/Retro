@@ -9,19 +9,19 @@ const PlaylistVideoCard = (props) => {
 
   return (
     <div className={styles.horizontal_card}>
-      <div className="horizontal-card-image-title">
+      <div className={styles.horizontal_image}>
         <img
           src={props.vid.thumbnail}
           alt={props.vid.title}
-          className={`basic-card-image horizontal-image ${styles.like_image}`}
+          className={styles.like_image}
         />
-        <div
-          className={styles.basic_card_primary}
-          onClick={() => navWatch(props.vid._id)}
-        >
-          <p className={styles.card_title}>{props.vid.title}</p>
-          <p className={`small-text ${styles.creator}`}>{props.vid.creator}</p>
-        </div>
+      </div>
+      <div
+        className={styles.basic_card_primary}
+        onClick={() => navWatch(props.vid._id)}
+      >
+        <p className={styles.card_title}>{props.vid.title}</p>
+        <p className={`small-text ${styles.creator}`}>{props.vid.creator}</p>
       </div>
       <div className={styles.card_action}>
         <span
