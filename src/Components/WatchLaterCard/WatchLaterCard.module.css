@@ -24,6 +24,7 @@
 .card_title {
     font-size: 86%;
     color: var(--hero-title);
+    flex-grow: 1;
 }
 
 .creator {
