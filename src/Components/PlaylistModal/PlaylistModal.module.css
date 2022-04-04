@@ -14,8 +14,6 @@
     border: 0.5px solid transparent;
     background-color: var(--sidebar-color);
     max-width: 240px;
-    min-height: 200px;
-    max-height: 540px;
     margin: 0px auto;
     left: 0;
     right: 0;
@@ -42,7 +40,7 @@
 
 .addToPlayList__modalList {
     text-align: left;
-    max-height: 300px;
+    max-height: 180px;
     overflow-y: auto;
     width: 97%;
     margin: 0 auto;
@@ -62,23 +60,23 @@
 
 .playlist_name{
     margin-left: 0.8rem;
+    font-size: 86%;
     color: var(--hero-title);
 }
 
 .addToPlaylist__create{
-    position: absolute;
-    bottom: 10px;
-    left: 12px;
-    right: 12px;
+    padding: 0 8px;
 }
 
 .addToPlaylist__input {
-    padding: 8px;
+    padding: 4px;
     color: var(--hero-title);
     background-color: transparent;
     border: none;
+    outline: none;
     border-bottom: 1px solid var(--hero-title);
     margin-bottom: 0.4rem;
+    font-family: "Poppins",sans-serif;
 }
 
 .create_playlist {
