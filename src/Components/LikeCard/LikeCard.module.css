@@ -10,7 +10,8 @@
 
 .basic_card_primary {
   padding: 8px;
-  align-self: flex-start;
+  text-align: left;
+  flex-grow: 1;
 }
 
 .horizontal_image {
@@ -49,6 +50,10 @@
   .horizontal_image {
     position: relative;
     max-width: 100%;
+  }
+
+  .basic_card_primary{
+    align-self: flex-start;
   }
   
   .card_action{
