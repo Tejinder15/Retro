@@ -8,6 +8,7 @@
   position: fixed;
   left: 0;
   top: 0;
+  z-index: 6;
 }
 
 .sidebar_items {
@@ -48,4 +49,24 @@
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+@media only screen and (max-width:426px) {
+  .sidebar {
+    height: 10vh;
+    min-width: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    top: auto;
+    padding: 0.6rem;
+  }
+
+  .sidebar_items {
+    flex-direction: row;
+    justify-content: space-between;
+    height: auto;
+    width: 90%;
+    margin: 0 auto;
+  }
 }

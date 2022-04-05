@@ -9,15 +9,22 @@
 }
 
 .basic_card_primary {
-    padding: 8px 12px;
+    padding: 8px;
+}
+
+.horizontal_image{
+    max-width: 15rem;
 }
 
 .like_image {
-    min-height: 130px;
+    max-width: 100%;
+    object-fit: cover;
 }
 
 .card_title {
+    font-size: 86%;
     color: var(--hero-title);
+    flex-grow: 1;
 }
 
 .creator {
@@ -25,10 +32,26 @@
 }
 
 .card_action {
-    padding: 1rem;
+    padding: 0.6rem;
 }
 
 .card_action span {
     cursor: pointer;
     color: var(--hero-title);
+}
+
+@media only screen and (max-width:582px) {
+    .horizontal_card {
+        flex-direction: column;
+    }
+
+    .horizontal_image {
+        position: relative;
+        max-width: 100%;
+    }
+
+    .card_action {
+        position: absolute;
+        right: 20px;
+    }
 }

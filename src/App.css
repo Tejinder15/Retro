@@ -79,7 +79,7 @@ input[type="password"] {
   overflow-y: auto;
   margin: 0 auto;
   border: 2px solid black;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .liked_container::-webkit-scrollbar {
@@ -93,4 +93,11 @@ input[type="password"] {
 
 .category_heading {
   color: var(--hero-title);
+}
+
+@media only screen and (max-width:426px){
+  .video_main_container{
+    width: 92%;
+    margin: 0 auto 0 auto;
+  }
 }

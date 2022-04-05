@@ -5,12 +5,13 @@
 }
 
 .navbar {
+  max-width: 1400px;
   width: 94%;
-  margin: 0 auto 0 80px;
-  padding: 0px 2rem;
+  padding: 0px 1.2rem;
   background-color: var(--body-color);
   position: sticky;
   top: 0;
+  left: 80px;
   z-index: 5;
 }
 
@@ -27,4 +28,11 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+
+@media only screen and (max-width:426px){
+  .navbar{
+    margin: 0 auto;
+    left: 0;
+  }
 }
