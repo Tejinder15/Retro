@@ -69,8 +69,12 @@ input[type="password"] {
   padding-bottom: 1.3rem;
 }
 
-.page_title{
+.page_title {
   color: var(--hero-title);
+}
+
+.present {
+  color: var(--retro-color);
 }
 
 .liked_container {
@@ -95,8 +99,8 @@ input[type="password"] {
   color: var(--hero-title);
 }
 
-@media only screen and (max-width:426px){
-  .video_main_container{
+@media only screen and (max-width: 426px) {
+  .video_main_container {
     width: 92%;
     margin: 0 auto 0 auto;
   }
