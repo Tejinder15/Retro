@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useLike, useAuth } from "../../Context";
 import axios from "axios";
 import { addToLike, removeFromLike } from "../../Utils";
-
+import toast, { Toaster } from "react-hot-toast";
 const Watch = () => {
   const navigate = useNavigate();
   const [isPlaylistModalVisible, setIsPlaylistModalVisible] = useState(false);
@@ -29,6 +29,7 @@ const Watch = () => {
   const addlikeHandler = async (video) => {
     if (token) {
       addToLike(videoData, token, LikeDispatch);
+      toast.success("Liked the video.");
     } else {
       navigate("/login");
     }
@@ -51,6 +52,7 @@ const Watch = () => {
   return (
     <div>
       <Navbar />
+      <Toaster />
       <div className="video_main_container">
         <div className={styles.watch_video_container}>
           <div className={styles.iframe_wrapper}>

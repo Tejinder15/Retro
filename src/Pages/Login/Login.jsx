@@ -82,7 +82,7 @@ const Login = () => {
           className="btn btn-primary"
           onClick={(e) => guestHandler(e, "tj@gmail.com", "tj123")}
         >
-          Login As Guest
+          Use Credentials
         </button>
       </form>
       <div className="signup-group">
