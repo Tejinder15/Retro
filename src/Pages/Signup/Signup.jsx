@@ -58,7 +58,7 @@ const Signup = () => {
   return (
     <div className="auth-container">
       <h2 className="center-text">Signup</h2>
-      <form action="" method="post">
+      <form onSubmit={signupHandler}>
         <div className={styles.name_container}>
           <div className="input-group">
             <label htmlFor="first_name">First Name</label>
@@ -123,11 +123,7 @@ const Signup = () => {
             value={user.confirmPassword}
           />
         </div>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={signupHandler}
-        >
+        <button type="submit" className="btn btn-primary">
           Create New Account
         </button>
       </form>
