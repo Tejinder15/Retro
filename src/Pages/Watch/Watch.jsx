@@ -2,18 +2,21 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { PlaylistModal } from "../../Components/PlaylistModal/PlaylistModal";
 import styles from "./Watch.module.css";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useLike, useAuth } from "../../Context";
 import axios from "axios";
-import { addToLike } from "../../Utils";
+import { addToLike, removeFromLike } from "../../Utils";
 
 const Watch = () => {
+  const navigate = useNavigate();
   const [isPlaylistModalVisible, setIsPlaylistModalVisible] = useState(false);
-  const [liked, setLiked] = useState(false);
   const [searchParams] = useSearchParams();
   const [videoData, setVideoData] = useState([]);
-  const { LikeState, LikeDispatch } = useLike();
+  const {
+    LikeState: { like },
+    LikeDispatch,
+  } = useLike();
   const { authState } = useAuth();
   const { token } = authState;
   const v = searchParams.get("v");
@@ -26,12 +29,22 @@ const Watch = () => {
   const addlikeHandler = async (video) => {
     if (token) {
       addToLike(videoData, token, LikeDispatch);
-      setLiked(true);
+    } else {
+      navigate("/login");
     }
   };
 
+  const removeLikeHandler = async (video) => {
+    removeFromLike(video, token, LikeDispatch);
+  };
+  console.log(like);
+
   const togglePlaylistModal = () => {
-    setIsPlaylistModalVisible(() => !isPlaylistModalVisible);
+    if (token) {
+      setIsPlaylistModalVisible(() => !isPlaylistModalVisible);
+    } else {
+      navigate("/login");
+    }
   };
 
   useEffect(() => loadVideoData(), []);
@@ -63,12 +76,21 @@ const Watch = () => {
                 </div>
               </div>
               <div className={styles.watch_video_actions}>
-                <span
-                  className={`material-icons-round ${liked && styles.liked}`}
-                  onClick={() => addlikeHandler(videoData._id)}
-                >
-                  thumb_up
-                </span>
+                {like.some((item) => item._id === videoData._id) ? (
+                  <span
+                    className={`material-icons-round ${styles.liked}`}
+                    onClick={() => removeLikeHandler(videoData._id)}
+                  >
+                    thumb_up
+                  </span>
+                ) : (
+                  <span
+                    className="material-icons-round"
+                    onClick={() => addlikeHandler(videoData._id)}
+                  >
+                    thumb_up
+                  </span>
+                )}
                 <span
                   className="material-icons-round"
                   onClick={togglePlaylistModal}
