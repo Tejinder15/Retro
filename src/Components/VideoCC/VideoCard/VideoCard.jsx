@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useWatchLater } from "../../../Context";
 import styles from "./VideoCard.module.css";
 const VideoCard = (props) => {
+  const {
+    watchLaterState: { watchlater },
+  } = useWatchLater();
   return (
     <div className={styles.videocard}>
       <div className={`${styles.basic_card} shadow`}>
@@ -27,13 +31,25 @@ const VideoCard = (props) => {
             </div>
             <div className={styles.video_title}>{props.title}</div>
             <div className={styles.basic_card_actions_secondary}>
-              <span
-                className="material-icons-round"
-                onClick={() => props.addToHandler(props.videoId)}
-                title="Add to watchlater"
-              >
-                add_box
-              </span>
+              {watchlater.some((item) => item._id === props.videoId) ? (
+                <span
+                  className="material-icons-round present"
+                  title="Add to watchlater"
+                >
+                  add_box
+                </span>
+              ) : (
+                <span
+                  className="material-icons-round"
+                  onClick={() => {
+                    props.addToHandler(props.videoId);
+                    // toast.success("Added To Watch Later.");
+                  }}
+                  title="Add to watchlater"
+                >
+                  add_box
+                </span>
+              )}
             </div>
           </div>
         </div>
