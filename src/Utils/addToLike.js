@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 const addToLike = async (video,token,LikeDispatch) => {
     try {
     const response = await axios.post(
@@ -12,11 +13,12 @@ const addToLike = async (video,token,LikeDispatch) => {
     );
     if (response.status === 201) {
       LikeDispatch({ type: "ADD_TO_LIKE", payload: response.data.likes });
+      toast.success("Liked the video");
     } else {
       throw new Error();
     }
   } catch (error) {
-    console.log(error);
+    toast.error(error);
   }
 };
 
