@@ -15,7 +15,7 @@ const removeFromWatchLater = async (videoid,token,watchLaterDispatch) =>{
       throw new Error();
     }
   } catch (error) {
-    console.log(error);
+    toast.error(error);
   }
 };
 

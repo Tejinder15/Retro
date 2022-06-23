@@ -4,6 +4,7 @@ import PlaylistVideoCard from "../../Components/PlaylistVideoCard/PlaylistVideoC
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useAuth, usePlaylist } from "../../Context";
 import { removeFromPlaylist } from "../../Utils";
+import { Toaster } from "react-hot-toast";
 const SinglePlaylist = () => {
   const { playlistState, playlistDispatch } = usePlaylist();
   const { playlist } = playlistState;
@@ -19,6 +20,7 @@ const SinglePlaylist = () => {
   return (
     <>
       <Navbar />
+      <Toaster />
       <div className="video_main_container">
         {currentPlaylist.videos.map((video) => (
           <PlaylistVideoCard

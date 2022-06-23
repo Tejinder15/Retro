@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { usePlaylist, useAuth } from "../../Context";
 
 const PlaylistCard = ({ title, playlistId }) => {
-  const { playlistState, playlistDispatch } = usePlaylist();
+  const { playlistDispatch } = usePlaylist();
   const navigate = useNavigate();
   const { authState } = useAuth();
   const { token } = authState;
@@ -23,10 +23,8 @@ const PlaylistCard = ({ title, playlistId }) => {
         {title}
       </span>
       <div className={styles.card_action}>
-        <button className="secondary-action">
-          <span className="material-icons-round" onClick={handleDelete}>
-            delete_outline
-          </span>
+        <button className="secondary-action" onClick={handleDelete}>
+          <span className="material-icons-round">delete_outline</span>
         </button>
       </div>
     </div>

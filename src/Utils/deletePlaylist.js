@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const deletePlaylist = async ({token,playlistDispatch,playlistId,}) => {
   try {
@@ -12,11 +13,12 @@ const deletePlaylist = async ({token,playlistDispatch,playlistId,}) => {
         type: "UPDATE_PLAYLIST",
         payload: response.data.playlists,
       });
+      toast.success("Playlist Deleted");
     } else {
       throw new Error(response.status);
     }
   } catch (error) {
-    console.error(error);
+    toast.error(error);
   }
 };
 

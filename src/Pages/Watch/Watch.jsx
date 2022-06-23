@@ -37,7 +37,6 @@ const Watch = () => {
   const removeLikeHandler = async (video) => {
     removeFromLike(video, token, LikeDispatch);
   };
-  console.log(like);
 
   const togglePlaylistModal = () => {
     if (token) {
