@@ -5,8 +5,7 @@
 }
 
 .navbar {
-  max-width: 1400px;
-  width: 94%;
+  width: 96%;
   padding: 0px 1.2rem;
   background-color: var(--body-color);
   position: sticky;
@@ -30,8 +29,8 @@
   border-radius: 50%;
 }
 
-@media only screen and (max-width:426px){
-  .navbar{
+@media only screen and (max-width: 426px) {
+  .navbar {
     margin: 0 auto;
     left: 0;
   }

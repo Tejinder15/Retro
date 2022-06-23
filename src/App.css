@@ -80,8 +80,8 @@ input[type="password"] {
 .liked_container {
   max-width: 40rem;
   max-height: 32rem;
-  overflow-y: auto;
   margin: 0 auto;
+  overflow-y: auto;
   border: 2px solid black;
   padding: 0.5rem;
 }

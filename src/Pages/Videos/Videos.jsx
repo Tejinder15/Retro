@@ -4,7 +4,7 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 import VideoContainer from "../../Components/VideoCC/VideoContainer";
 const Videos = () => {
   return (
-    <>
+    <div>
       <Navbar />
       <div className="video_main_container">
         <VideoContainer category={"Comedy"} key={uuidv4()} />
@@ -13,7 +13,7 @@ const Videos = () => {
         <VideoContainer category={"Sports"} key={uuidv4()} />
       </div>
       <Sidebar />
-    </>
+    </div>
   );
 };
 
