@@ -103,5 +103,6 @@ input[type="password"] {
   .video_main_container {
     width: 92%;
     margin: 0 auto 0 auto;
+    padding-bottom: 5rem;
   }
 }

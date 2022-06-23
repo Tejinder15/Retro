@@ -29,7 +29,12 @@ const VideoCard = (props) => {
                 className={styles.channel_logo}
               />
             </div>
-            <div className={styles.video_title}>{props.title}</div>
+            <Link
+              to={"/watch" + `?v=${props.videoId}`}
+              className={styles.video_title}
+            >
+              {props.title}
+            </Link>
             <div className={styles.basic_card_actions_secondary}>
               {watchlater.some((item) => item._id === props.videoId) ? (
                 <span
