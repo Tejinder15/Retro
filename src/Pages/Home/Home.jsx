@@ -41,6 +41,7 @@ const Home = () => {
         </ul>
       </nav>
       <div className={styles.hero_description_container}>
+        <div className={styles.overlay}></div>
         <div className={styles.hero_text}>
           <h1 className={styles.hero_title}>
             Get Entertainment With Different Genre of Videos.
