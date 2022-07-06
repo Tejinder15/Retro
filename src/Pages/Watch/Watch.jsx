@@ -26,7 +26,7 @@ const Watch = () => {
     setVideoData(response.data.video);
   };
 
-  const addlikeHandler = async (video) => {
+  const addlikeHandler = (video) => {
     if (token) {
       addToLike(videoData, token, LikeDispatch);
     } else {

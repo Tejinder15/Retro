@@ -5,7 +5,6 @@ import styles from "./VideoContainer.module.css";
 import { addToWatchlater, addToHistory } from "../../Utils";
 import { useWatchLater, useAuth, useHistory } from "../../Context";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
 const VideoContainer = ({ category }) => {
   const [videoListData, setVideoListData] = useState([]);
   const { watchLaterDispatch } = useWatchLater();
@@ -14,11 +13,10 @@ const VideoContainer = ({ category }) => {
   const { authState } = useAuth();
   const { token } = authState;
 
-  const addToHandler = async (videoid) => {
+  const addToHandler = (videoid) => {
     if (token) {
       const video = videoListData.find((item) => item._id === videoid);
       addToWatchlater(video, token, watchLaterDispatch);
-      toast.success("Added To Watch Later.");
     } else {
       navigate("/login");
     }
@@ -46,7 +44,6 @@ const VideoContainer = ({ category }) => {
   return (
     <>
       <h2 className={styles.category_heading}>{category}</h2>
-      <Toaster />
       <div className={styles.videolist_container}>
         {videoListData.map((item) => (
           <VideoCard

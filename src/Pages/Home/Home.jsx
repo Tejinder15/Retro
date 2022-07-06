@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext/auth-context";
 import herovideo from "../../Assets/Video/Hero.mp4";
 import styles from "./Home.module.css";
+import { Toaster } from "react-hot-toast";
 const Home = () => {
   const { authState, authDispatch } = useAuth();
   const userName = authState.user;
@@ -40,6 +41,7 @@ const Home = () => {
           </li>
         </ul>
       </nav>
+      <Toaster />
       <div className={styles.hero_description_container}>
         <div className={styles.overlay}></div>
         <div className={styles.hero_text}>
