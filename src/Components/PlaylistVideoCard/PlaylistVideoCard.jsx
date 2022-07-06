@@ -1,26 +1,21 @@
-import { useNavigate } from "react-router-dom";
 import styles from "./PlaylistVideoCard.module.css";
+import { Link } from "react-router-dom";
 const PlaylistVideoCard = (props) => {
-  const navigate = useNavigate();
-
-  const navWatch = (vidId) => {
-    navigate("/watch" + `?v=${vidId}`);
-  };
-
   return (
     <div className={styles.horizontal_card}>
       <div className={styles.horizontal_image}>
-        <img
-          src={props.vid.thumbnail}
-          alt={props.vid.title}
-          className={styles.like_image}
-        />
+        <Link to={`/watch?v=${props.vid._id}`}>
+          <img
+            src={props.vid.thumbnail}
+            alt={props.vid.title}
+            className={styles.like_image}
+          />
+        </Link>
       </div>
-      <div
-        className={styles.basic_card_primary}
-        onClick={() => navWatch(props.vid._id)}
-      >
-        <p className={styles.card_title}>{props.vid.title}</p>
+      <div className={styles.basic_card_primary}>
+        <Link to={`/watch?v=${props.vid._id}`} className={styles.card_title}>
+          {props.vid.title}
+        </Link>
         <p className={`small-text ${styles.creator}`}>{props.vid.creator}</p>
       </div>
       <div className={styles.card_action}>

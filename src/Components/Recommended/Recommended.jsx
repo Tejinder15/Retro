@@ -1,6 +1,7 @@
-import styles from "./WatchLaterCard.module.css";
+import styles from "./Recommended.module.css";
 import { Link } from "react-router-dom";
-const WatchLaterCard = (props) => {
+
+const Recommended = (props) => {
   return (
     <div className={styles.horizontal_card}>
       <div className={styles.horizontal_image}>
@@ -18,16 +19,8 @@ const WatchLaterCard = (props) => {
         </Link>
         <p className={`small-text ${styles.creator}`}>{props.creator}</p>
       </div>
-      <div className={styles.card_action}>
-        <span
-          className="material-icons-outlined"
-          onClick={() => props.removefromwl(props.vidId)}
-        >
-          clear
-        </span>
-      </div>
     </div>
   );
 };
 
-export default WatchLaterCard;
+export default Recommended;

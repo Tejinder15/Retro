@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext/auth-context";
 import styles from "./Navbar.module.css";
@@ -23,9 +22,9 @@ const Navbar = () => {
   };
   return (
     <nav className={`navbar ${styles.navbar}`}>
-      <div className={styles.logo}>
+      <Link to="/videos" className={styles.logo}>
         <h1>Retro</h1>
-      </div>
+      </Link>
       <ul className="nav-links">
         <li>
           {

@@ -6,6 +6,8 @@ const HistoryReducer = (state,action) => {
             return {...state,history:action.payload};
         case "REMOVE_FROM_HISTORY":
             return {...state,history:action.payload};
+        case "CLEAR_HISTORY":
+            return {...state,history:action.payload};
         default:
             return state;
     }

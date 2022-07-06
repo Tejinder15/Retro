@@ -5,6 +5,7 @@ export {getLike} from "./getLike";
 export {getHistory} from "./getHistory";
 export {getWatchLater} from "./getWatchLater";
 export {removeFromHistory} from "./removeFromHistory";
+export {deleteAllHistory} from "./deleteAllHistory";
 export {removeFromWatchLater} from "./removeFromWatchLater";
 export {removeFromLike} from "./removeFromLike";
 export {createNewPlaylist} from "./createNewPlaylist";

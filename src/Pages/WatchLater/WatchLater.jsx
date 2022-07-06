@@ -5,6 +5,7 @@ import { useAuth } from "../../Context/AuthContext/auth-context";
 import { getWatchLater, removeFromWatchLater } from "../../Utils/";
 import { useEffect } from "react";
 import WatchLaterCard from "../../Components/WatchLaterCard/WatchLaterCard";
+import { Toaster } from "react-hot-toast";
 
 const WatchLater = () => {
   const { watchLaterState, watchLaterDispatch } = useWatchLater();
@@ -22,6 +23,7 @@ const WatchLater = () => {
       <Navbar />
       <div className="video_main_container">
         <h1 className="page_title">Watch Later</h1>
+        <Toaster />
         <div className="liked_container">
           {watchlater.length !== 0 ? (
             watchlater.map((item) => (

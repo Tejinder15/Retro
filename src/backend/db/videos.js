@@ -173,7 +173,7 @@ export const videos = [
     description:
     "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     thumbnail: "https://img.youtube.com/vi/CI6nDMeD4bo/maxresdefault.jpg",
-    logo: "https://yt3.ggpht.com/rFBD18lZT2qeXNBkVMrqgCtRPX9ctXFRXVtrekvuPWMg2iiUzZrYmyR8PkuDgrDrbL9Vz8F8ABY=s176-c-k-c0x00ffffff-no-rj-mo"
+    logo: "https://yt3.ggpht.com/g083wpJ8yJ9YaYDmI-xK_xPiMtQKVssUzS9MkPasj7hp4KvAO_TXr7MHhYQzOfv0XOyhoLXIZA=s176-c-k-c0x00ffffff-no-rj"
   },
   {
     _id: "IgFMsEX7060",

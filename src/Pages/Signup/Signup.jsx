@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext/auth-context";
+import toast, { Toaster } from "react-hot-toast";
 const Signup = () => {
   const navigate = useNavigate();
   const { authDispatch } = useAuth();
@@ -16,7 +17,7 @@ const Signup = () => {
 
   const checkPasswordHandler = () => {
     if (user.password !== user.confirmPassword) {
-      alert("Password Does not Match");
+      toast.error("Password Does not Match");
     } else {
       return true;
     }
@@ -45,18 +46,19 @@ const Signup = () => {
             "user",
             JSON.stringify(response.data.createdUser)
           );
-          navigate("/");
-          alert("Signed up");
+          navigate("/videos");
+          toast.success("Signed up");
         } else {
-          console.error("Error", response);
+          toast.error("Error", response);
         }
       } catch (error) {
-        throw new Error(error);
+        toast.error(error.response.data.errors[0]);
       }
     }
   };
   return (
     <div className="auth-container">
+      <Toaster />
       <h2 className="center-text">Signup</h2>
       <form onSubmit={signupHandler}>
         <div className={styles.name_container}>

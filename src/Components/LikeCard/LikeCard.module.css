@@ -11,7 +11,7 @@
 .basic_card_primary {
   padding: 8px;
   text-align: left;
-  flex-grow: 1;
+  width: 92%;
 }
 
 .horizontal_image {
@@ -21,12 +21,15 @@
 .like_image {
   max-width: 100%;
   object-fit: cover;
-  background-image: linear-gradient(to top,rgba(0,0,0,0.5));
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5));
+  display: block;
 }
 
 .card_title {
   font-size: 86%;
   color: var(--hero-title);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .creator {
@@ -42,7 +45,7 @@
   color: var(--hero-title);
 }
 
-@media only screen and (max-width:582px) {
+@media only screen and (max-width: 582px) {
   .horizontal_card {
     flex-direction: column;
   }
@@ -52,11 +55,11 @@
     max-width: 100%;
   }
 
-  .basic_card_primary{
+  .basic_card_primary {
     align-self: flex-start;
   }
-  
-  .card_action{
+
+  .card_action {
     position: absolute;
     right: 20px;
   }

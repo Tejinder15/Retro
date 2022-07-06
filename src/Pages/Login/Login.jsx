@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext/auth-context";
+import toast, { Toaster } from "react-hot-toast";
 const Login = () => {
   const navigate = useNavigate();
   const { authDispatch } = useAuth();
@@ -33,7 +34,7 @@ const Login = () => {
         throw new Error();
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.errors[0]);
     }
   };
 
@@ -42,54 +43,53 @@ const Login = () => {
     setUserData({ ...userData, email: email, password: password });
   };
   return (
-    <div className="auth-container">
-      <h2 className="center-text">Login</h2>
-      <form onSubmit={loginHandler}>
-        <div className="input-group">
-          <label htmlFor="email">Email address</label>
-          <input
-            type="email"
-            name="email"
-            className="textfield"
-            required
-            autoComplete="off"
-            id="email"
-            value={userData.email}
-            onChange={changeHandler}
-          />
+    <div>
+      <Toaster />
+      <div className="auth-container">
+        <h2 className="center-text">Login</h2>
+        <form onSubmit={loginHandler}>
+          <div className="input-group">
+            <label htmlFor="email">Email address</label>
+            <input
+              type="email"
+              name="email"
+              className="textfield"
+              required
+              autoComplete="off"
+              id="email"
+              value={userData.email}
+              onChange={changeHandler}
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="lpassword">Password</label>
+            <input
+              type="password"
+              name="password"
+              required
+              id="lpassword"
+              value={userData.password}
+              onChange={changeHandler}
+              autoComplete="off"
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Login
+          </button>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={(e) => guestHandler(e, "tj@gmail.com", "tj123")}
+          >
+            Use Credentials
+          </button>
+        </form>
+        <div className="signup-group">
+          <Link to="/signup" className="signup-link">
+            Create New Account
+          </Link>
+          <span className="material-icons-outlined">navigate_next</span>
         </div>
-        <div className="input-group">
-          <label htmlFor="lpassword">Password</label>
-          <input
-            type="password"
-            name="password"
-            required
-            id="lpassword"
-            value={userData.password}
-            onChange={changeHandler}
-            autoComplete="off"
-          />
-        </div>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          // onClick={loginHandler}
-        >
-          Login
-        </button>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={(e) => guestHandler(e, "tj@gmail.com", "tj123")}
-        >
-          Use Credentials
-        </button>
-      </form>
-      <div className="signup-group">
-        <Link to="/signup" className="signup-link">
-          Create New Account
-        </Link>
-        <span className="material-icons-outlined">navigate_next</span>
       </div>
     </div>
   );

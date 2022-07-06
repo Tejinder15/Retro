@@ -4,6 +4,7 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useEffect } from "react";
 import { useLike, useAuth } from "../../Context";
 import { getLike, removeFromLike } from "../../Utils/";
+import { Toaster } from "react-hot-toast";
 
 const Liked = () => {
   const { LikeState, LikeDispatch } = useLike();
@@ -21,6 +22,7 @@ const Liked = () => {
       <Navbar />
       <div className="video_main_container">
         <h2 className="page_title">Liked</h2>
+        <Toaster />
         <div className="liked_container">
           {like.length !== 0 ? (
             like.map((item) => (

@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const removeFromPlaylist = async (videoid,token,playlistDispatch,playlistId) => {
   try {
@@ -12,11 +13,12 @@ const removeFromPlaylist = async (videoid,token,playlistDispatch,playlistId) => 
         type: "REMOVE_FROM_PLAYLIST",
         payload: response.data.playlist,
       });
+      toast.success("Removed from Playlist");
     } else {
       throw new Error(response.status);
     }
   } catch (error) {
-    console.error(error);
+    toast.error(error);
   }
 };
 

@@ -1,15 +1,16 @@
-import axios from "axios";
 import Navbar from "../../Components/Navbar/Navbar";
 import PlaylistCard from "../../Components/PlaylistCard/PlaylistCard";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { usePlaylist } from "../../Context";
+import { Toaster } from "react-hot-toast";
 
 const Playlist = () => {
-  const { playlistState, playlistDispatch } = usePlaylist();
+  const { playlistState } = usePlaylist();
   const { playlist } = playlistState;
   return (
     <div>
       <Navbar />
+      <Toaster />
       {playlist?.map((item) => {
         return (
           <PlaylistCard

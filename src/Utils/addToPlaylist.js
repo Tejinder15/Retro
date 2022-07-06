@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const addToPlaylist = async ({video,token,playlistDispatch,playlistId}) => {
   try {
@@ -12,11 +13,12 @@ const addToPlaylist = async ({video,token,playlistDispatch,playlistId}) => {
         type: "ADD_TO_PLAYLIST",
         payload: response.data.playlist,
       });
+      toast.success("Playlist updated");
     } else {
       throw new Error(response.status);
     }
   } catch (error) {
-    console.error(error);
+    toast.error(error);
   }
 };
 

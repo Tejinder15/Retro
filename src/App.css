@@ -2,6 +2,18 @@
   list-style-type: none;
 }
 
+.clear_history {
+  padding: 0.5rem 0.8rem;
+  background-color: transparent;
+  color: var(--retro-color);
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-decoration: underline;
+  border: none;
+  cursor: pointer;
+}
+
 .auth-container {
   max-width: 325px;
   padding: 1.2rem 1.8rem;
@@ -80,8 +92,8 @@ input[type="password"] {
 .liked_container {
   max-width: 40rem;
   max-height: 32rem;
-  overflow-y: auto;
   margin: 0 auto;
+  overflow-y: auto;
   border: 2px solid black;
   padding: 0.5rem;
 }
@@ -103,5 +115,6 @@ input[type="password"] {
   .video_main_container {
     width: 92%;
     margin: 0 auto 0 auto;
+    padding-bottom: 5rem;
   }
 }

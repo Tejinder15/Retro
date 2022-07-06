@@ -7,12 +7,20 @@ import { useEffect, useState } from "react";
 import { useLike, useAuth } from "../../Context";
 import axios from "axios";
 import { addToLike, removeFromLike } from "../../Utils";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
+import Recommended from "../../Components/Recommended/Recommended";
+import { useWatchLater } from "../../Context";
+import { addToWatchlater } from "../../Utils";
 const Watch = () => {
   const navigate = useNavigate();
   const [isPlaylistModalVisible, setIsPlaylistModalVisible] = useState(false);
   const [searchParams] = useSearchParams();
+  const [recommVid, setRecommVid] = useState([]);
   const [videoData, setVideoData] = useState([]);
+  const {
+    watchLaterDispatch,
+    watchLaterState: { watchlater },
+  } = useWatchLater();
   const {
     LikeState: { like },
     LikeDispatch,
@@ -26,10 +34,28 @@ const Watch = () => {
     setVideoData(response.data.video);
   };
 
-  const addlikeHandler = async (video) => {
+  const loadRecomm = async () => {
+    const response = await axios.get("/api/videos");
+    const videoList = response.data.videos;
+    setRecommVid(
+      videoList.filter(
+        (item) =>
+          item.category === videoData.category && item._id !== videoData._id
+      )
+    );
+  };
+
+  const addlikeHandler = (video) => {
     if (token) {
       addToLike(videoData, token, LikeDispatch);
-      toast.success("Liked the video.");
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const addToHandler = (vid) => {
+    if (token) {
+      addToWatchlater(vid, token, watchLaterDispatch);
     } else {
       navigate("/login");
     }
@@ -38,7 +64,6 @@ const Watch = () => {
   const removeLikeHandler = async (video) => {
     removeFromLike(video, token, LikeDispatch);
   };
-  console.log(like);
 
   const togglePlaylistModal = () => {
     if (token) {
@@ -48,12 +73,18 @@ const Watch = () => {
     }
   };
 
-  useEffect(() => loadVideoData(), []);
+  useEffect(() => {
+    loadVideoData();
+  }, [v]);
+
+  useEffect(() => {
+    loadRecomm();
+  }, [videoData]);
   return (
     <div>
       <Navbar />
       <Toaster />
-      <div className="video_main_container">
+      <div className={styles.video_main_container}>
         <div className={styles.watch_video_container}>
           <div className={styles.iframe_wrapper}>
             <iframe
@@ -99,9 +130,38 @@ const Watch = () => {
                 >
                   playlist_add
                 </span>
+                {watchlater.some((item) => item._id === videoData._id) ? (
+                  <span
+                    className="material-icons-round present"
+                    title="Add to watchlater"
+                  >
+                    watch_later
+                  </span>
+                ) : (
+                  <span
+                    className="material-icons-round"
+                    onClick={() => {
+                      addToHandler(videoData);
+                    }}
+                    title="Add to watchlater"
+                  >
+                    watch_later
+                  </span>
+                )}
               </div>
             </div>
           </div>
+        </div>
+        <div className={styles.recomm_container}>
+          {recommVid.map((item) => (
+            <Recommended
+              key={item._id}
+              image={item.thumbnail}
+              title={item.title}
+              creator={item.creator}
+              vidId={item._id}
+            />
+          ))}
         </div>
       </div>
       <PlaylistModal

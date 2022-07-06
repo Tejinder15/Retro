@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const removeFromLike = async (videoid,token,LikeDispatch) =>{
     try {
@@ -9,11 +10,12 @@ const removeFromLike = async (videoid,token,LikeDispatch) =>{
     });
     if (response.status === 200) {
       LikeDispatch({ type: "REMOVE_FROM_LIKE", payload: response.data.likes });
+      toast.success("Removed from Liked videos");
     } else {
       throw new Error();
     }
   } catch (error) {
-    console.log(error);
+    toast.error(error);
   }
 };
 

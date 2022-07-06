@@ -14,6 +14,8 @@
   text-overflow: ellipsis;
   padding: 2px 4px;
   margin-top: -2px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .basic_card_description {
