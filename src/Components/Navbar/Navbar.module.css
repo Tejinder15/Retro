@@ -23,6 +23,7 @@
   background-color: var(--retro-color);
   color: white;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .avatar_sm {
