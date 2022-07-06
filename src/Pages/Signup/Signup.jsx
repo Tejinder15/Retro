@@ -17,7 +17,7 @@ const Signup = () => {
 
   const checkPasswordHandler = () => {
     if (user.password !== user.confirmPassword) {
-      alert("Password Does not Match");
+      toast.error("Password Does not Match");
     } else {
       return true;
     }
@@ -46,13 +46,13 @@ const Signup = () => {
             "user",
             JSON.stringify(response.data.createdUser)
           );
-          navigate("/");
+          navigate("/videos");
           toast.success("Signed up");
         } else {
           toast.error("Error", response);
         }
       } catch (error) {
-        throw new Error(error);
+        toast.error(error.response.data.errors[0]);
       }
     }
   };

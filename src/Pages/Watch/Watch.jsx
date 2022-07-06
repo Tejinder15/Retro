@@ -8,10 +8,12 @@ import { useLike, useAuth } from "../../Context";
 import axios from "axios";
 import { addToLike, removeFromLike } from "../../Utils";
 import { Toaster } from "react-hot-toast";
+import Recommended from "../../Components/Recommended/Recommended";
 const Watch = () => {
   const navigate = useNavigate();
   const [isPlaylistModalVisible, setIsPlaylistModalVisible] = useState(false);
   const [searchParams] = useSearchParams();
+  const [recommVid, setRecommVid] = useState([]);
   const [videoData, setVideoData] = useState([]);
   const {
     LikeState: { like },
@@ -24,6 +26,17 @@ const Watch = () => {
   const loadVideoData = async () => {
     const response = await axios.get(`/api/video/${v}`);
     setVideoData(response.data.video);
+  };
+
+  const loadRecomm = async () => {
+    const response = await axios.get("/api/videos");
+    const videoList = response.data.videos;
+    setRecommVid(
+      videoList.filter(
+        (item) =>
+          item.category === videoData.category && item._id !== videoData._id
+      )
+    );
   };
 
   const addlikeHandler = (video) => {
@@ -46,12 +59,18 @@ const Watch = () => {
     }
   };
 
-  useEffect(() => loadVideoData(), []);
+  useEffect(() => {
+    loadVideoData();
+  }, [v]);
+
+  useEffect(() => {
+    loadRecomm();
+  }, [videoData]);
   return (
     <div>
       <Navbar />
       <Toaster />
-      <div className="video_main_container">
+      <div className={styles.video_main_container}>
         <div className={styles.watch_video_container}>
           <div className={styles.iframe_wrapper}>
             <iframe
@@ -100,6 +119,17 @@ const Watch = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className={styles.recomm_container}>
+          {recommVid.map((item) => (
+            <Recommended
+              key={item._id}
+              image={item.thumbnail}
+              title={item.title}
+              creator={item.creator}
+              vidId={item._id}
+            />
+          ))}
         </div>
       </div>
       <PlaylistModal

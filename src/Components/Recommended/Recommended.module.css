@@ -1,0 +1,62 @@
+.horizontal_card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 1.6rem;
+  background-color: var(--sidebar-color);
+  box-shadow: 0px 4px 5px 1px rgb(0 0 0 / 50%);
+}
+
+.basic_card_primary {
+  padding: 8px;
+  width: 92%;
+}
+
+.horizontal_image {
+  max-width: 15rem;
+}
+
+.like_image {
+  max-width: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  display: block;
+}
+
+.card_title {
+  font-size: 86%;
+  color: var(--hero-title);
+  flex-grow: 1;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.creator {
+  color: var(--category-color);
+}
+
+.card_action {
+  padding: 0.6rem;
+}
+
+.card_action span {
+  cursor: pointer;
+  color: var(--hero-title);
+}
+
+@media only screen and (max-width: 582px) {
+  .horizontal_card {
+    flex-direction: column;
+  }
+
+  .horizontal_image {
+    position: relative;
+    max-width: 100%;
+  }
+
+  .card_action {
+    position: absolute;
+    right: 20px;
+  }
+}
