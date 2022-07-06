@@ -9,12 +9,18 @@ import axios from "axios";
 import { addToLike, removeFromLike } from "../../Utils";
 import { Toaster } from "react-hot-toast";
 import Recommended from "../../Components/Recommended/Recommended";
+import { useWatchLater } from "../../Context";
+import { addToWatchlater } from "../../Utils";
 const Watch = () => {
   const navigate = useNavigate();
   const [isPlaylistModalVisible, setIsPlaylistModalVisible] = useState(false);
   const [searchParams] = useSearchParams();
   const [recommVid, setRecommVid] = useState([]);
   const [videoData, setVideoData] = useState([]);
+  const {
+    watchLaterDispatch,
+    watchLaterState: { watchlater },
+  } = useWatchLater();
   const {
     LikeState: { like },
     LikeDispatch,
@@ -42,6 +48,14 @@ const Watch = () => {
   const addlikeHandler = (video) => {
     if (token) {
       addToLike(videoData, token, LikeDispatch);
+    } else {
+      navigate("/login");
+    }
+  };
+
+  const addToHandler = (vid) => {
+    if (token) {
+      addToWatchlater(vid, token, watchLaterDispatch);
     } else {
       navigate("/login");
     }
@@ -116,6 +130,24 @@ const Watch = () => {
                 >
                   playlist_add
                 </span>
+                {watchlater.some((item) => item._id === videoData._id) ? (
+                  <span
+                    className="material-icons-round present"
+                    title="Add to watchlater"
+                  >
+                    watch_later
+                  </span>
+                ) : (
+                  <span
+                    className="material-icons-round"
+                    onClick={() => {
+                      addToHandler(videoData);
+                    }}
+                    title="Add to watchlater"
+                  >
+                    watch_later
+                  </span>
+                )}
               </div>
             </div>
           </div>
