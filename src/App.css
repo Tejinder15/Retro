@@ -2,6 +2,18 @@
   list-style-type: none;
 }
 
+.clear_history {
+  padding: 0.5rem 0.8rem;
+  background-color: transparent;
+  color: var(--retro-color);
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-decoration: underline;
+  border: none;
+  cursor: pointer;
+}
+
 .auth-container {
   max-width: 325px;
   padding: 1.2rem 1.8rem;
